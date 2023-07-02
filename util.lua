@@ -37,10 +37,10 @@ local function getText(page)
             if type(data.Items[0].tag.pages[page]) ~= "nil" then
                 local text = data.Items[0].tag.pages[page]
                 return text
-            else return nil end
-        else return nil end
-    else return nil end
+            end
+        end
+    end
+    return nil
 end
-
 
 return {body_armL = body_armL, body_armR = body_armR, body_head = body_head, getText = getText}
