@@ -1,5 +1,6 @@
 local util = require("util")
 local comp = false
+local url = util.url
 while comp == false do
     local text = util.getText(0)
     if type(text) ~= "nil" then

@@ -1,11 +1,16 @@
+-- Peripherals
 local redInt_0 = peripheral.wrap("redstoneIntegrator_0")
 local redInt_1 = peripheral.wrap("redstoneIntegrator_1")
 local reader = peripheral.find("blockReader")
 
+local url = ""
+
+-- Quickly toggles a redstone integrator
 local function toggle(integrator,side)
     integrator.setOutput(side,true) sleep(0.25) integrator.setOutput(side,false)
 end
 
+-- Moves the Totem God's left arm
 local function body_armL(direction)
     if direction == 1 then
         toggle(redInt_1,"right")
@@ -14,6 +19,7 @@ local function body_armL(direction)
     end
 end
 
+-- Moves the Totem God's right arm
 local function body_armR(direction)
     if direction == 1 then
         toggle(redInt_0,"left")
@@ -21,6 +27,7 @@ local function body_armR(direction)
         toggle(redInt_0,"front")
     end
 end
+-- Moves the Totem God's head
 local function body_head(direction)
     if direction == 1 then
         toggle(redInt_0,"back")
@@ -29,6 +36,7 @@ local function body_head(direction)
     end
 end
 
+-- Gets the text of the book in the first slot of the storage provided by the blockReader peripheral
 local function getText(page)
     page = tonumber(page)
     local data = reader.getBlockData()
@@ -43,4 +51,4 @@ local function getText(page)
     return nil
 end
 
-return {body_armL = body_armL, body_armR = body_armR, body_head = body_head, getText = getText}
+return {url = url, body_armL = body_armL, body_armR = body_armR, body_head = body_head, getText = getText}
