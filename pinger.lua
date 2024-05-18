@@ -26,8 +26,12 @@ if http.checkURL(url) then
     end
 
     if isError == false then
-        for i,v in pairs(data) do
-            print(i.." "..v)
+        if type(data) == "table" then
+            for i,v in pairs(data) do
+                print(i.." "..v) 
+            end
+        else
+            print(v)
         end
     end
 end
